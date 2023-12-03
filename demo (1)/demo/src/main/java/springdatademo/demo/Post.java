@@ -14,15 +14,6 @@ public class Post {
     @Id @GeneratedValue
     private Long id;
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-
-                '}';
-    }
-
     private String title;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
