@@ -1,27 +1,22 @@
 package springdatademo.demo;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 public class Account {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
 
-    @Column
-    private String username;
+    private String firstName;
 
-    @Column
-    private String password;
+    private String lastName;
 
-
-    @OneToMany
-    private Set<Study> studies = new HashSet<>();
 }

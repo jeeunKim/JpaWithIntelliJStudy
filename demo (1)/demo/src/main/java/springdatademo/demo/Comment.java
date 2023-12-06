@@ -15,6 +15,8 @@ public class Comment {
     @Id @GeneratedValue
     private Long id;
 
+    private int heart = 0;
+
     private String comment;
 
     @ManyToOne

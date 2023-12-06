@@ -37,6 +37,7 @@ public class JpaRunner implements ApplicationRunner {
         System.out.println(postById);
 
 
+
     }
 
     private static void addStudy(Study study, Account account) {

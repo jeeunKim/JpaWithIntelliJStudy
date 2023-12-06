@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Date;
+
 
 @Entity
 @Getter
@@ -15,6 +17,12 @@ public class Post {
     private Long id;
 
     private String title;
+
+    @Lob
+    private String content;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Comment> comments = new HashSet<>();
