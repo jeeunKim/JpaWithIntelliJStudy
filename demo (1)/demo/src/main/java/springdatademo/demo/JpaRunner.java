@@ -19,13 +19,13 @@ public class JpaRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-//        Post post3 = new Post();
-//        post3.setTitle("hi");
-//
-//        Comment comment = new Comment();
-//        comment.setComment("nice 2 meet you");
+        Post post3 = new Post();
+        post3.setTitle("hi");
 
-//        postRepository.save(post3);
+        Comment comment = new Comment();
+        comment.setComment("nice 2 meet you");
+
+        postRepository.save(post3);
 
         postRepository.findAll().forEach(p ->
                 log.info("post = {}", p)
@@ -36,12 +36,7 @@ public class JpaRunner implements ApplicationRunner {
         System.out.println(postById.isEmpty());
         System.out.println(postById);
 
-
-
     }
 
-    private static void addStudy(Study study, Account account) {
-        study.setOwner(account);
-        account.getStudies().add(study);
-    }
+
 }
