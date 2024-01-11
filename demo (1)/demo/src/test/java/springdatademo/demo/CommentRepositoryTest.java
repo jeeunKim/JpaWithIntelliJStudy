@@ -21,6 +21,8 @@ class CommentRepositoryTest {
     @Autowired
     CommentRepository commentRepository;
 
+    @Autowired
+    PostRepository postRepository;
     @Test
     void findByCommentContainsTests(){
 
@@ -63,5 +65,19 @@ class CommentRepositoryTest {
         comment.setHeart(heart);
         comment.setComment(c);
         commentRepository.save(comment);
+    }
+
+    @Test
+    void getComment(){
+        Post post = new Post();
+        post.setTitle("jpa");
+        Post savedPost = postRepository.save(post);
+
+        Comment comment = new Comment();
+        comment.setComment("comment");
+        comment.setPost(savedPost);
+        commentRepository.save(comment);
+
+        commentRepository.findById(1L);
     }
 }

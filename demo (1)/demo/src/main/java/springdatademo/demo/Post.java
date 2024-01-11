@@ -4,14 +4,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Date;
 
 
 @Entity
 @Getter
 @Setter
+@NamedQuery(name = "Post.findByTitle", query = "select p from Post as p where p.title = ?1") //jpql
 public class Post {
     @Id @GeneratedValue
     private Long id;
@@ -24,12 +23,7 @@ public class Post {
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Comment> comments = new HashSet<>();
 
-    public void addComment(Comment comment){
-        this.getComments().add(comment);
-        comment.setPost(this);
-    }
+
 
 }

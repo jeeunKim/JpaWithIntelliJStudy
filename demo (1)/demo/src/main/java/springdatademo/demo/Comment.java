@@ -1,9 +1,6 @@
 package springdatademo.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,11 +12,13 @@ public class Comment {
     @Id @GeneratedValue
     private Long id;
 
-    private int heart = 0;
-
     private String comment;
 
-    @ManyToOne
+    private int heart;
+
+    @ManyToOne(fetch = FetchType.EAGER) //EAGER가 기본 / LAZY로 변경 가능 (post정보를  뒤늦게 가져옴)
     private Post post;
+
+
 }
 
