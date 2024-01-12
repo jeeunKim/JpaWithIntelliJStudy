@@ -62,7 +62,6 @@ class CommentRepositoryTest {
 
     private void createComment(int heart, String c) {
         Comment comment = new Comment();
-        comment.setHeart(heart);
         comment.setComment(c);
         commentRepository.save(comment);
     }
@@ -78,6 +77,26 @@ class CommentRepositoryTest {
         comment.setPost(savedPost);
         commentRepository.save(comment);
 
-        commentRepository.findById(1L);
+
     }
+
+    @Test
+    void getCc(){
+        Post post = new Post();
+        post.setTitle("jpa");
+        Post savedPost = postRepository.save(post);
+
+        Comment comment = new Comment();
+        comment.setPost(savedPost);
+        comment.setUp(10);
+        comment.setDown(1);
+        commentRepository.save(comment);
+
+        commentRepository.findByPost_Id(savedPost.getId()).forEach(c ->{
+                System.out.println("===========");
+                System.out.println(c.getVotes());
+        });
+    }
+
+
 }

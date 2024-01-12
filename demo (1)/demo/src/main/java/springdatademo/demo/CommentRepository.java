@@ -1,8 +1,8 @@
 package springdatademo.demo;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -24,6 +24,8 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
     List<Comment> findByHeartLessThan(int likeCount, Sort sort  );
 
+//    @EntityGraph(value = "Comment.post")
+//    Optional<Comment> loadById(Long id);
 
-
+    List<CommentSummary> findByPost_Id(Long id); //인터페이스 기반의 Projection의 closed 방식
 }
